@@ -5,7 +5,7 @@ import { RegisterComponent } from "./components/register/register.component";
 import { HomeComponent } from "./components/home/home.component";
 import { LayoutComponent } from "./components/layout/layout.component";
 import { RouterModule } from "@angular/router";
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -14,25 +14,8 @@ import { SharedModule } from '../shared/shared.module';
     HomeComponent,
     LayoutComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forRoot([
-      {
-        path: "home",
-        component: HomeComponent
-      },
-      {
-        path: "login",
-        component: LoginComponent
-      },
-      {
-        path: "register",
-        component: RegisterComponent
-      }
-    ])
-  ],
-  
+  imports: [CommonModule, SharedModule],
+
   exports: [LoginComponent, RegisterComponent, HomeComponent, LayoutComponent]
 })
 export class AppAuthenticationModule {}
