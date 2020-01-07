@@ -1,0 +1,60 @@
+@import 'styles/variables.scss';
+
+.container {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: $background-card;
+
+  border-radius: 8px;
+}
+p,
+h1 {
+  color: $font-color;
+}
+
+.label {
+  color: $font-color;
+  padding: 8px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.input-container {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: $font-link;
+  cursor: pointer;
+}
+
+.form-input {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 8px;
+  background: $background-input;
+  border: none;
+  border-radius: 8px;
+  color: $font-color;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin: 24px auto;
+  padding: 8px;
+  border-radius: 8px;
+  background: $background-button;
+  color: $font-color;
+  border: none;
+  cursor: pointer;
+}
