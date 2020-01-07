@@ -1,7 +1,9 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { of, Observable } from "rxjs";
+import { Injectable, ErrorHandler } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
+import { UserLogin } from "../../app-authentication/models/login";
+import { loginAuth } from '../../app-authentication/models/loginAuth';
 
 @Injectable({
   providedIn: "root"
@@ -9,17 +11,15 @@ import { map, catchError } from "rxjs/operators";
 export class MockApiService {
   private baseUrl: string;
   constructor(private http: HttpClient) {
-    this.baseUrl = "/api/login";
+    this.baseUrl = "https://reqres.in/api/";
   }
 
-  login(credentials) {
-    return this.http
-      .post(this.baseUrl, JSON.stringify(credentials))
-      .pipe(
-        catchError((error: HttpErrorResponse) => of(null) as Observable<String>)
-      );
+  login(credentials: loginAuth) {
+    return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials).pipe(
+      map((response: UserLogin) => response),
+      catchError(this.handleError)
+    );
   }
-
   handleError(error) {
     let errorMessage = "";
     if (error.error instanceof ErrorEvent) {
@@ -31,5 +31,12 @@ export class MockApiService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
+  }
+
+  register(userData: loginAuth) {
+    return this.http.post<UserLogin>(`${this.baseUrl}register`, userData).pipe(
+      map((response:UserLogin) => response),
+      catchError(this.handleError)
+    )
   }
 }

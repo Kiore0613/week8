@@ -1,14 +1,15 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { LoginComponent } from "./components/login/login.component";
-import { RegisterComponent } from "./components/register/register.component";
-import { HomeComponent } from "./components/home/home.component";
-import { SharedModule } from "../shared/shared.module";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, HomeComponent],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule],
 
-  exports: [LoginComponent, RegisterComponent, HomeComponent]
+  exports: [LoginComponent, RegisterComponent, HomeComponent],
 })
 export class AppAuthenticationModule {}
