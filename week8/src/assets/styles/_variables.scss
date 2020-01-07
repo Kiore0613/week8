@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=BioRhyme&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono&display=swap');
+
 //Mixins sizes
 $screen-tablet: 768px;
 $screen-laptop: 1024px;
@@ -5,16 +8,19 @@ $screen-laptop: 1024px;
 //Colors
 $black: #17171A;
 $black-primary: #000000;
+$grey: #5D5D5E;
 $white: #F4F4F4;
 $blue-primary: #5F68FA;
 $blue: #312F77;
 
 
 //Typographic
-$font-family: 'helvetica';
+$font-title: 'BioRhyme';
+$font-body: 'Space Mono';
 
 $background: $black-primary;
 $background-card: $black;
-$font: $white;
-$font-link: $blue;
+$background-input: $grey;
+$font-color: $white;
+$font-link: $blue-primary;
 $background-button: $blue-primary;
