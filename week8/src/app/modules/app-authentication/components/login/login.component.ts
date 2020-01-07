@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MockApiService } from 'src/app/modules/shared/services/mock-api.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { loginAuth } from '../../models/loginAuth';
-import { Router, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +15,18 @@ import { Router, Routes } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  private router: Router;
   errorMessage: string;
 
-  constructor(private mockApiService: MockApiService) {}
+  constructor(
+    private mockApiService: MockApiService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {}
-  form = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+  form = this.formBuilder.group({
+    username: this.formBuilder.control('', [Validators.required]),
+    password: this.formBuilder.control('', [Validators.required]),
   });
 
   login(form: loginAuth) {
@@ -26,7 +34,7 @@ export class LoginComponent implements OnInit {
       if (response) {
         localStorage.setItem('token', response.token),
           (error) => (this.errorMessage = error);
-        this.router.navigate(['/home']);
+        this.router.navigate(['']);
       } else {
       }
     });
