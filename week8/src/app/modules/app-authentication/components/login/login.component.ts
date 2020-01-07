@@ -1,32 +1,34 @@
-import { Component, OnInit } from "@angular/core";
-import { MockApiService } from "src/app/modules/shared/services/mock-api.service";
+import { Component, OnInit } from '@angular/core';
+import { MockApiService } from 'src/app/modules/shared/services/mock-api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { loginAuth } from '../../models/loginAuth';
+import { Router, Routes } from '@angular/router';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  private router: Router;
   errorMessage: string;
 
   constructor(private mockApiService: MockApiService) {}
 
   ngOnInit() {}
   form = new FormGroup({
-    username: new FormControl("", [
-      Validators.required
-    ]),
-    password: new FormControl("", [
-      Validators.required
-    ])
-  })
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+  });
 
-  login(form:loginAuth) {
-    this.mockApiService.login(form).subscribe(
-      response => localStorage.setItem("token", response.token),
-      error => (this.errorMessage = error)
-    );
+  login(form: loginAuth) {
+    this.mockApiService.login(form).subscribe((response) => {
+      if (response) {
+        localStorage.setItem('token', response.token),
+          (error) => (this.errorMessage = error);
+        this.router.navigate(['/home']);
+      } else {
+      }
+    });
   }
 }
