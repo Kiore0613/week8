@@ -4,24 +4,30 @@
   </div>
   <form [formGroup]="form" (ngSubmit)="login(form)">
     <div class="input-container">
-      <label for="username" class="label">Username</label>
+      <label for="email" class="label">Email</label>
       <input
         type="text"
         class="form-input"
-        formControlName="username"
-        name="username"
-        id="username"
+        formControlName="email"
+        name="email"
+        id="email"
         placeholder="me@example.com"
       />
       <div
         class="error"
-        *ngIf="username.touched && username.invalid"
+        *ngIf="email.touched && email.invalid"
       >
         <div
           class="error-text error"
-          *ngIf="username.errors?.required"
+          *ngIf="email.errors?.required"
         >
-          Field Username is required
+          Field Email is required
+        </div>
+        <div
+          class="error-text error"
+          *ngIf="email.errors?.email"
+        >
+          The Email format is invalid
         </div>
       </div>
     </div>

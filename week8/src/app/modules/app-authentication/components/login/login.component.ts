@@ -18,15 +18,15 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.form = this.formBuilder.group({
-      username: this.formBuilder.control('', [Validators.required]),
+      email: this.formBuilder.control('', [Validators.required, Validators.email]),
       password: this.formBuilder.control('', [Validators.required]),
     });
-    this.form.controls.username.errors.required;
+    this.form.controls.email.errors.required;
     this.form.controls.password.errors.required;
   }
 
-  get username() {
-    return this.form.get('username');
+  get email() {
+    return this.form.get('email');
   }
   get password() {
     return this.form.get('password');
