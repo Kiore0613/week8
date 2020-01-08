@@ -17,19 +17,18 @@ export class MockApiService {
   login(credentials: loginAuth) {
     return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials).pipe(
       map((response: UserLogin) => response),
-      catchError(this.handleError)
+      catchError( error => this.handleError(error))
     );
   }
   handleError(error) {
     let errorMessage = "";
+    console.log(error);
     if (error.error instanceof ErrorEvent) {
-      // client-side error
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
+   
     return throwError(errorMessage);
   }
 
