@@ -1,1 +1,43 @@
-<p>register works!</p>
+<div class="container">
+  <div class="card-title">
+    <h1>Sign Up</h1>
+  </div>
+  <form>
+    <div class="card-form">
+      <label for="firstName" class="label">First Name</label>
+      <input type="text" class="form-input" name="firstName" id="firtName" />
+    </div>
+    <div class="card-form">
+      <label for="lastName" class="label">Last Name</label>
+      <input type="text" class="form-input" name="lastName" id="lastName" />
+    </div>
+    <div class="card-form">
+      <label for="username" class="label">Username</label>
+      <input type="text" class="form-input" name="username" id="username" />
+    </div>
+    <div class="card-form">
+      <label for="email" class="label">Email</label>
+      <input type="text" class="form-input" name="email" id="email" />
+    </div>
+    <div class="card-form">
+      <label for="username" class="label">Password</label>
+      <input type="text" class="form-input" name="username" id="username" />
+    </div>
+    <div class="card-form">
+      <label for="confirmPassword" class="label">Confirm password</label>
+      <input
+        type="confirmPassword"
+        class="form-input"
+        name="confirmPassword"
+        id="confirmPassword"
+      />
+    </div>
+    <button type="submit" class="button">
+      Register
+    </button>
+  </form>
+  <div class="card-title">
+    <p>You have an account?</p>
+    <a routerLink="/login">Sign In here</a>
+  </div>
+</div>
