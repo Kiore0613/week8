@@ -1,30 +1,65 @@
 <div class="container">
   <div class="card-title">
-    <h1>Sign In</h1>
-    <p>Dont have an account?</p>
-    <a routerLink="/register">Sign Up here</a>
+    <h1>Log In</h1>
   </div>
-  <form (ngSubmit)="login(form)" >
+  <form [formGroup]="form" (ngSubmit)="login(form)">
     <div class="input-container">
       <label for="username" class="label">Username</label>
       <input
         type="text"
         class="form-input"
+        formControlName="username"
         name="username"
         id="username"
+        placeholder="me@example.com"
       />
+      <div
+        class="error"
+        *ngIf="username.touched && username.invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="username.errors?.required"
+        >
+          Field Username is required
+        </div>
+      </div>
     </div>
-    <div class="card-form">
+    <div class="input-container">
       <label for="password" class="label">Password</label>
       <input
         type="password"
         class="form-input"
+        formControlName="password"
         name="password"
         id="password"
+        placeholder="Password"
       />
+      <div
+        class="error"
+        *ngIf="password.touched && password.invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="password.errors?.required"
+        >
+          Field Password is required
+        </div>
+      </div>
     </div>
-    <button type="submit" class="button" (click)="login(form.value)" [disabled]="!form.valid">
-      Login
-    </button>
+    <div class="card-button">
+      <button
+        type="submit"
+        class="button"
+        (click)="login(form.value)"
+        [disabled]="!form.valid"
+      >
+        Login
+      </button>
+    </div>
   </form>
+  <div class="card-title">
+    <p>Don't have an account?</p>
+    <a routerLink="/register">Sign Up here</a>
+  </div>
 </div>
