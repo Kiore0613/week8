@@ -18,7 +18,10 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.form = this.formBuilder.group({
-      email: this.formBuilder.control('', [Validators.required, Validators.email]),
+      email: this.formBuilder.control('', [
+        Validators.required,
+        Validators.email,
+      ]),
       password: this.formBuilder.control('', [Validators.required]),
     });
     this.form.controls.email.errors.required;
@@ -35,8 +38,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.mockApiService.login(this.form.value).subscribe(() => {
-        this.router.navigate(['']);
-    });
+    this.mockApiService.login(this.form.value).subscribe(
+      () => this.router.navigate(['']),
+      (error) => (this.errorMessage = error)
+    );
   }
 }
