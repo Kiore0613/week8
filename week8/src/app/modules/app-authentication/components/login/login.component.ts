@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.mockApiService.login(this.form.value).subscribe((response) => {
-        localStorage.setItem('token', response.token)
+    this.mockApiService.login(this.form.value).subscribe(() => {
         this.router.navigate(['']);
     });
   }
