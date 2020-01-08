@@ -6,7 +6,7 @@ import { UserLogin } from '../../app-authentication/models/login';
 import { loginAuth } from '../../app-authentication/models/loginAuth';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MockApiService {
   private baseUrl: string;
@@ -17,8 +17,7 @@ export class MockApiService {
   }
 
   login(credentials: loginAuth) {
-    return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials)
-    .pipe(
+    return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials).pipe(
       tap(() => {
         this.isLogged.next(true);
       }),
@@ -28,8 +27,10 @@ export class MockApiService {
 
   logged() {
     if (localStorage.getItem('token')) {
-      return this.isLogged;
+      this.isLogged.next(true);
     }
+
+    return this.isLogged.asObservable();
   }
 
   handleError(error) {
