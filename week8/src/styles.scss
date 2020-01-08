@@ -10,3 +10,7 @@ body {
 *h1 {
   font-family: $font-title;
 }
+
+input::placeholder {
+  color: $font-color;
+}
