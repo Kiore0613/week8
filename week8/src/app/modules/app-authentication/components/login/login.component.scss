@@ -1,4 +1,5 @@
 @import 'styles/variables.scss';
+@import 'styles/mixins.scss';
 
 .container {
   width: 80%;
@@ -15,17 +16,28 @@ h1 {
   color: $font-color;
 }
 
+p {
+  margin: 0;
+}
+
 .label {
+  margin-bottom: 16px;
   color: $font-color;
-  padding: 8px;
 }
 
 .card-title {
+  p,
+  a {
+    font-size: 8px;
+  }
   text-align: center;
+  margin: 16px 0;
 }
 
 .input-container {
   display: block;
+  margin-top: 16px;
+  padding: 0 16px;
 }
 
 a {
@@ -34,27 +46,64 @@ a {
   cursor: pointer;
 }
 
+.error {
+  color: #ff7961;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 8px;
+}
+
 .form-input {
   display: flex;
   justify-content: center;
-  width: 80%;
-  margin: 0 auto;
-  padding: 8px;
+  width: 100%;
+  margin-top: 8px;
+  height: 36px;
+  text-indent: 16px;
   background: $background-input;
   border: none;
   border-radius: 8px;
   color: $font-color;
 }
 
+.card-button {
+  padding: 0 16px;
+  margin: 16px 0;
+}
+
 .button {
-  display: flex;
-  justify-content: center;
-  width: 70%;
-  margin: 24px auto;
-  padding: 8px;
+  width: 100%;
+  margin-top: 8px;
+  height: 36px;
   border-radius: 8px;
   background: $background-button;
   color: $font-color;
   border: none;
   cursor: pointer;
+  font-family: $font-title;
+  font-size: 16px;
+}
+
+@include screen-tablet {
+  .container {
+    width: 40%;
+    margin: 0 auto;
+  }
+
+  form {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@include screen-laptop {
+  .container {
+    width: 30%;
+    margin: 0 auto;
+  }
+
+  form {
+    width: 60%;
+    margin: 0 auto;
+  }
 }
