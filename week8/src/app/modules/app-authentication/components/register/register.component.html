@@ -45,6 +45,11 @@
         placeholder="Username"
         formControlName="username"
       />
+      <div class="error" *ngIf="username.touched && username.invalid">
+        <div class="error-text error" *ngIf="username.errors?.required">
+          Field Username is required
+        </div>
+      </div>
     </div>
     <div class="card-form">
       <label for="email" class="label">Email</label>
@@ -66,12 +71,12 @@
       </div>
     </div>
     <div class="card-form">
-      <label for="username" class="label">Password</label>
+      <label for="password" class="label">Password</label>
       <input
-        type="text"
+        type="password"
         class="form-input"
-        name="username"
-        id="username"
+        name="password"
+        id="password"
         placeholder="Password"
         formControlName="password"
       />
@@ -90,7 +95,7 @@
     <div class="card-form">
       <label for="confirmPassword" class="label">Confirm password</label>
       <input
-        type="confirmPassword"
+        type="password"
         class="form-input"
         name="confirmPassword"
         id="confirmPassword"
@@ -99,7 +104,7 @@
       />
       <div
       class="error"
-      *ngIf="confirmPassword.touched && confirmPassword.invalid"
+      *ngIf="confirmPassword.touched"
     >
       <div
         class="error-text error"
@@ -107,6 +112,12 @@
       >
         Field Confirm Password is required
       </div>
+      <div
+      class="error-text error"
+      *ngIf="form.hasError('notMatch')"
+    >
+      Passwords don't match
+    </div>
     </div>
     </div>
     <button
