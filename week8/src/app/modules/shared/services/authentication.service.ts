@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { UserLogin } from '../../app-authentication/models/login';
@@ -9,9 +9,9 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class MockApiService {
+export class AuthenticationService {
   private baseUrl: string;
-  private isLogged = new BehaviorSubject<boolean>(false);
+  private isLogged: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -24,7 +24,7 @@ export class MockApiService {
     return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials).pipe(
       tap((response) => {
         this.localStorageService.setToken(response.token);
-        this.isLogged.next(true);
+        this.isLogged = true;
       }),
       catchError((error) => this.handleError(error))
     );
@@ -32,20 +32,17 @@ export class MockApiService {
 
   logged() {
     if (this.localStorageService.getToken()) {
-      this.isLogged.next(true);
+      this.isLogged = true;
     }
-
-    return this.isLogged.asObservable();
+    return this.isLogged;
   }
 
-  handleError(error) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(errorMessage);
+  isLogIn() {
+    return this.localStorageService.hasToken();
+  }
+
+  logout() {
+    return this.localStorageService.removeToken();
   }
 
   register(userData: Credential) {
@@ -53,5 +50,16 @@ export class MockApiService {
       map((response: UserLogin) => response),
       catchError(this.handleError)
     );
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Data is not valid, Please enter a valid email`;
+      console.log(errorMessage);
+    }
+    return throwError(errorMessage);
   }
 }

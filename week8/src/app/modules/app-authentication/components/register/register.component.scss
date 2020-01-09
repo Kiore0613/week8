@@ -1,72 +1,111 @@
 @import 'styles/variables.scss';
+@import 'styles/mixins.scss';
 
 .container {
+  margin: 0 auto;
   width: 80%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   background: $background-card;
-
   border-radius: 8px;
 }
+
 p,
 h1 {
   color: $font-color;
+  padding-top: 16px;
 }
 
 .label {
+  margin-bottom: 16px;
   color: $font-color;
-  padding: 8px;
 }
 
 .card-title {
-  p {
-    font-size: 12px;
+  padding: 8px;
+  a {
+    text-decoration: none;
+    cursor: pointer;
   }
+  a:hover {
+    color: $background-button;
+  }
+  font-size: 14px;
   text-align: center;
-  margin: 16px 0;
+  margin-bottom: 16px;
+}
+
+.input-container {
+  display: block;
+  margin-top: 16px;
+  padding: 0 16px;
 }
 
 .error {
+  margin-top: 8px;
+  padding: 8px;
   color: #ff7961;
   font-size: 12px;
-  text-align: right;
-  margin-top: 8px;
+  text-align: center;
 }
 
 .card-form {
-  display: block;
-  margin: 16px;
-  padding: 8px;
-}
-
-a {
-  text-decoration: none;
-  color: $font-link;
-  cursor: pointer;
+  margin: 20px 0;
 }
 
 .form-input {
   display: flex;
   justify-content: center;
-  width: 80%;
-  margin: 0 auto;
-  padding: 8px;
+  width: 100%;
+  margin-top: 8px;
+  height: 36px;
+  text-indent: 16px;
   background: $background-input;
   border: none;
   border-radius: 8px;
   color: $font-color;
 }
 
+.card-button {
+  padding: 0 16px;
+  margin: 16px 0;
+}
+
 .button {
-  display: flex;
-  justify-content: center;
-  width: 70%;
-  margin: 24px auto;
-  padding: 8px;
+  width: 100%;
+  margin-top: 8px;
+  height: 36px;
   border-radius: 8px;
   background: $background-button;
   color: $font-color;
   border: none;
+  cursor: pointer;
+  font-family: $font-title;
+  font-size: 16px;
+}
+
+.button:hover {
+  background: $font-link;
+}
+
+@include screen-tablet {
+  .container {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  form {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@include screen-laptop {
+  .container {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  form {
+    width: 60%;
+    margin: 0 auto;
+  }
 }

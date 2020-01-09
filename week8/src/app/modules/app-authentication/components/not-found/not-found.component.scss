@@ -1,0 +1,70 @@
+@import 'styles/variables.scss';
+@import 'styles/mixins.scss';
+
+.container {
+  margin: 16px auto;
+}
+.image-container {
+  img {
+    display: flex;
+    width: 80%;
+    height: 80%;
+    margin: 20px auto;
+    border-radius: 8px;
+  }
+}
+.message-container {
+  animation: pulse 2s;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: $placeholder;
+  }
+  100% {
+    background-color: $background-card;
+  }
+}
+
+.message-container {
+  display: block;
+  margin: 16px 16px;
+  padding: 16px;
+  text-align: center;
+  background: $background-card;
+  color: $font-color;
+  border-radius: 16px;
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $background-button;
+  }
+}
+
+@keyframes a,p,h1 {
+  0% {
+    opacity: 0;
+    margin-left: -20px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
+@include screen-tablet {
+  .container {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@include screen-laptop {
+  .container {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

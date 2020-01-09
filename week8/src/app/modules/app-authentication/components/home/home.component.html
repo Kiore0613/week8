@@ -1,1 +1,33 @@
-<p>home works!</p>
+<nav class="nav-home">
+  <div class="image-container">
+    <a routerLink="/login">
+      <img
+        src="https://www.accelerance.com/hubfs/Applaudo/Applaudo-Studios-1.png"
+        alt="Applaudo-logo"
+      />
+    </a>
+  </div>
+  <h1>Week 8</h1>
+  <div class="image-container">
+    <img
+      (click)="showProfile()"
+      src="https://picsum.photos/200"
+      alt="Applaudo-logo"
+    />
+  </div>
+</nav>
+<div class="card" [hidden]="isHidden">
+  <div class="card-profile">
+    <div class="image-profile">
+      <img src="https://picsum.photos/200" alt="" />
+    </div>
+    <div class="profile-details">
+      <h2>Kiore0613</h2>
+      <p>eve.holt@reqres.in</p>
+      <button class="button" type="submit" (click)="logOut()">Log out</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <p>Home</p>
+</div>

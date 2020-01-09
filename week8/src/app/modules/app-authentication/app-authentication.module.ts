@@ -7,9 +7,17 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CanActiveAuthGuard } from './guards/can-active-auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, HomeComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    NotFoundComponent,
+    MainLayoutComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,
@@ -18,6 +26,11 @@ import { CanActiveAuthGuard } from './guards/can-active-auth.guard';
     AppRoutingModule,
   ],
   providers: [CanActiveAuthGuard],
-  exports: [LoginComponent, RegisterComponent, HomeComponent],
+  exports: [
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    MainLayoutComponent,
+  ],
 })
 export class AppAuthenticationModule {}

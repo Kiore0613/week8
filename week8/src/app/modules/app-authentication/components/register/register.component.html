@@ -51,39 +51,41 @@
         </div>
       </div>
     </div>
-    <div class="card-form">
-      <label for="email" class="label">Email</label>
-      <input
-        type="text"
-        class="form-input"
-        name="email"
-        id="email"
-        placeholder="me@example.com"
-        formControlName="email"
-      />
-      <div class="error" *ngIf="email.touched && email.invalid">
-        <div class="error-text error" *ngIf="email.errors?.required">
-          Field Email is required
-        </div>
-        <div class="error-text error" *ngIf="email.errors?.email">
-          The Email format is invalid
+    <div class="card-form" formGroupName="credentialForm">
+      <div class="credential-container">
+        <label for="email" class="label">Email</label>
+        <input
+          type="text"
+          class="form-input"
+          name="email"
+          id="email"
+          placeholder="me@example.com"
+          formControlName="email"
+        />
+        <div class="error" *ngIf="email.touched && email.invalid">
+          <div class="error-text error" *ngIf="email.errors?.required">
+            Field Email is required
+          </div>
+          <div class="error-text error" *ngIf="email.errors?.email">
+            The Email format is invalid
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card-form">
-      <label for="password" class="label">Password</label>
-      <input
-        type="password"
-        class="form-input"
-        name="password"
-        id="password"
-        placeholder="Password"
-        formControlName="password"
-      />
-    </div>
-    <div class="error" *ngIf="password.touched && password.invalid">
-      <div class="error-text error" *ngIf="password.errors?.required">
-        Field Password is required
+      <div class="card-form">
+        <label for="password" class="label">Password</label>
+        <input
+          type="password"
+          class="form-input"
+          name="password"
+          id="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <div class="error" *ngIf="password.touched && password.invalid">
+          <div class="error-text error" *ngIf="password.errors?.required">
+            Field Password is required
+          </div>
+        </div>
       </div>
     </div>
     <div class="card-form">
@@ -114,6 +116,9 @@
       Register
     </button>
   </form>
+  <div class="error" *ngIf="errorMessage !== ''">
+    {{ errorMessage }}
+  </div>
   <div class="card-title">
     <p>You have an account?</p>
     <a routerLink="/login">Sign In here</a>
