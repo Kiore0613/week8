@@ -7,9 +7,10 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CanActiveAuthGuard } from './guards/can-active-auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, HomeComponent],
+  declarations: [LoginComponent, RegisterComponent, HomeComponent, NotFoundComponent],
   imports: [
     CommonModule,
     SharedModule,
