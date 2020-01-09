@@ -1,7 +1,13 @@
 <div class="container">
   <div class="card-title">
-    <h1>Log In {{errorMessage}}</h1>
+    <h1>Log In </h1>
   </div>
+  <div
+  class="error-text error"
+  *ngIf="errorMessage !== ''"
+>
+  {{errorMessage}}
+</div>
   <form [formGroup]="form" (ngSubmit)="login(form)">
     <div class="input-container">
       <label for="email" class="label">Email</label>
