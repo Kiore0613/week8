@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private mockApiService: AuthenticationService,
+    private authenticateService: AuthenticationService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.mockApiService.login(this.form.value).subscribe(
+    this.authenticateService.login(this.form.value).subscribe(
       () => this.router.navigate(['']),
       (error) => (this.errorMessage = error)
     );
