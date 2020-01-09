@@ -27,6 +27,16 @@ h1 {
 }
 
 .card-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: fit-content;
+  padding: 16px;
+  margin: 8px auto 0 auto;
+  background-color: rgba($color: $font-color, $alpha: 0.3);
+  border-radius: 8px;
+}
+
+.image-profile {
   img {
     display: flex;
     justify-content: center;
@@ -37,14 +47,8 @@ h1 {
     border: none;
     border-radius: 50%;
   }
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: fit-content;
-  padding: 16px;
-  margin: 8px auto 0 auto;
-  background-color: rgba($color: $font-color, $alpha: 0.3);
-  border-radius: 8px;
 }
+
 .button {
   width: 100%;
   margin-top: 8px;
