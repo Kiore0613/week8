@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './modules/app-authentication/components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './modules/app-authentication/components/home/home.component';
@@ -8,15 +9,20 @@ import { CanActiveAuthGuard } from './modules/app-authentication/guards/can-acti
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent, canActivate: [CanActiveAuthGuard]
+    component: HomeComponent,
+    canActivate: [CanActiveAuthGuard],
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
