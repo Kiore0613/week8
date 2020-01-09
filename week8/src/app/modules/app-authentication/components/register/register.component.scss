@@ -11,6 +11,7 @@
 p,
 h1 {
   color: $font-color;
+  padding-top: 16px;
 }
 
 .label {
@@ -19,6 +20,7 @@ h1 {
 }
 
 .card-title {
+  padding: 8px;
   a {
     text-decoration: none;
     cursor: pointer;
@@ -28,7 +30,7 @@ h1 {
   }
   font-size: 14px;
   text-align: center;
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .input-container {
