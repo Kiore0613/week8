@@ -12,7 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  private errorMessage: string;
+  credentialForm: FormGroup;
+  errorMessage: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,22 +25,18 @@ export class RegisterComponent implements OnInit {
         firstName: this.formBuilder.control('', [Validators.required]),
         lastName: this.formBuilder.control('', [Validators.required]),
         username: this.formBuilder.control('', [Validators.required]),
-        email: this.formBuilder.control('', [
-          Validators.required,
-          Validators.email,
-        ]),
-        password: this.formBuilder.control('', [Validators.required]),
+
+        credentialForm: this.formBuilder.group({
+          email: this.formBuilder.control('', [
+            Validators.required,
+            Validators.email,
+          ]),
+          password: this.formBuilder.control('', [Validators.required]),
+        }),
         confirmPassword: this.formBuilder.control('', [Validators.required]),
       },
       { validators: passwordsValidator }
     );
-
-    this.form.controls.firstName.errors.required;
-    this.form.controls.lastName.errors.required;
-    this.form.controls.username.errors.required;
-    this.form.controls.email.errors.required;
-    this.form.controls.password.errors.required;
-    this.form.controls.confirmPassword.errors.required;
   }
 
   get firstName() {
@@ -52,20 +49,22 @@ export class RegisterComponent implements OnInit {
     return this.form.get('username');
   }
   get email() {
-    return this.form.get('email');
+    return this.form.get('credentialForm.email');
   }
   get password() {
-    return this.form.get('password');
+    return this.form.get('credentialForm.password');
   }
   get confirmPassword() {
     return this.form.get('confirmPassword');
   }
 
   register() {
-    this.authenticationService.register(this.form.value).subscribe(
-      () => this.router.navigate(['/login']),
-      (error: string) => (this.errorMessage = error)
-    );
+    this.authenticationService
+      .register(this.form.get('credentialForm').value)
+      .subscribe(
+        () => this.router.navigate(['/login']),
+        (error: string) => (this.errorMessage = error)
+      );
   }
 
   ngOnInit() {}
