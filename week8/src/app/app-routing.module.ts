@@ -5,6 +5,7 @@ import { HomeComponent } from './modules/app-authentication/components/home/home
 import { LoginComponent } from './modules/app-authentication/components/login/login.component';
 import { RegisterComponent } from './modules/app-authentication/components/register/register.component';
 import { CanActiveAuthGuard } from './modules/app-authentication/guards/can-active-auth.guard';
+import { CanActiveHomeGuard } from './modules/app-authentication/guards/can-active-home.guard';
 
 const routes: Routes = [
   {
@@ -15,10 +16,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [CanActiveHomeGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [CanActiveHomeGuard],
   },
   {
     path: '**',
