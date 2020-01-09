@@ -2,37 +2,115 @@
   <div class="card-title">
     <h1>Sign Up</h1>
   </div>
-  <form>
+  <form [formGroup]="form" (ngSubmit)="register(form)">
     <div class="card-form">
       <label for="firstName" class="label">First Name</label>
-      <input type="text" class="form-input" name="firstName" id="firtName" />
+      <input
+        type="text"
+        class="form-input"
+        name="firstName"
+        id="firtName"
+        placeholder="First Name"
+        formControlName="firstName"
+      />
+      <div class="error" *ngIf="firstName.touched && firstName.invalid">
+        <div class="error-text error" *ngIf="firstName.errors?.required">
+          Field First Name is required
+        </div>
+      </div>
     </div>
     <div class="card-form">
       <label for="lastName" class="label">Last Name</label>
-      <input type="text" class="form-input" name="lastName" id="lastName" />
+      <input
+        type="text"
+        class="form-input"
+        name="lastName"
+        id="lastName"
+        placeholder="Last Name"
+        formControlName="lastName"
+      />
+      <div class="error" *ngIf="lastName.touched && lastName.invalid">
+        <div class="error-text error" *ngIf="lastName.errors?.required">
+          Field Last Name is required
+        </div>
+      </div>
     </div>
     <div class="card-form">
       <label for="username" class="label">Username</label>
-      <input type="text" class="form-input" name="username" id="username" />
+      <input
+        type="text"
+        class="form-input"
+        name="username"
+        id="username"
+        placeholder="Username"
+        formControlName="username"
+      />
+      <div class="error" *ngIf="username.touched && username.invalid">
+        <div class="error-text error" *ngIf="username.errors?.required">
+          Field Username is required
+        </div>
+      </div>
     </div>
     <div class="card-form">
       <label for="email" class="label">Email</label>
-      <input type="text" class="form-input" name="email" id="email" />
+      <input
+        type="text"
+        class="form-input"
+        name="email"
+        id="email"
+        placeholder="me@example.com"
+        formControlName="email"
+      />
+      <div class="error" *ngIf="email.touched && email.invalid">
+        <div class="error-text error" *ngIf="email.errors?.required">
+          Field Email is required
+        </div>
+        <div class="error-text error" *ngIf="email.errors?.email">
+          The Email format is invalid
+        </div>
+      </div>
     </div>
     <div class="card-form">
-      <label for="username" class="label">Password</label>
-      <input type="text" class="form-input" name="username" id="username" />
+      <label for="password" class="label">Password</label>
+      <input
+        type="password"
+        class="form-input"
+        name="password"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+    </div>
+    <div class="error" *ngIf="password.touched && password.invalid">
+      <div class="error-text error" *ngIf="password.errors?.required">
+        Field Password is required
+      </div>
     </div>
     <div class="card-form">
       <label for="confirmPassword" class="label">Confirm password</label>
       <input
-        type="confirmPassword"
+        type="password"
         class="form-input"
         name="confirmPassword"
         id="confirmPassword"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
       />
+      <div class="error" *ngIf="confirmPassword.touched">
+        <div class="error-text error" *ngIf="confirmPassword.errors?.required">
+          Field Confirm Password is required
+        </div>
+        <div class="error-text error" *ngIf="form.hasError('notMatch')">
+          Passwords don't match
+        </div>
+      </div>
     </div>
-    <button type="submit" class="button">
+    <button
+      type="submit"
+      class="button"
+      (click)="register(form.value)"
+      [disabled]="!form.valid"
+    >
       Register
     </button>
   </form>

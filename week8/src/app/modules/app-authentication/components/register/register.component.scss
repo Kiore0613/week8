@@ -22,10 +22,17 @@ h1 {
 
 .card-title {
   p {
-    font-size: 8px;
+    font-size: 12px;
   }
   text-align: center;
   margin: 16px 0;
+}
+
+.error {
+  color: #ff7961;
+  font-size: 12px;
+  text-align: right;
+  margin-top: 8px;
 }
 
 .card-form {

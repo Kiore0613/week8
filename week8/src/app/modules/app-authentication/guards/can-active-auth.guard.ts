@@ -9,11 +9,12 @@ export class CanActiveAuthGuard implements CanActivate {
   constructor(private mockApiService: MockApiService, private router: Router) {}
 
   canActivate() {
-    if (!this.mockApiService.logged()) {
-      this.router.navigate(['/login']);
-      console.log('Test Guard');
-      return false;
-    }
+    this.mockApiService.logged().subscribe((status) => {
+      if (!status) {
+        this.router.navigate(['/login']);
+        console.log('Test Guard');
+      }
+    });
     return true;
   }
 }
