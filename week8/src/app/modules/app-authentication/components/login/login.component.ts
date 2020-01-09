@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MockApiService } from 'src/app/modules/shared/services/mock-api.service';
+import { AuthenticationService } from 'src/app/modules/shared/services/authentication.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private mockApiService: MockApiService,
+    private mockApiService: AuthenticationService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
