@@ -2,7 +2,7 @@
   <div class="card-title">
     <h1>Log In</h1>
   </div>
-  <div class="error" *ngIf="errorMessage !== ''">
+  <div class="error-response" *ngIf="errorMessage !== ''">
     {{ errorMessage }}
   </div>
   <form [formGroup]="form" (ngSubmit)="login(form)">
