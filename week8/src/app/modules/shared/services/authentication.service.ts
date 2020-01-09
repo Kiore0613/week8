@@ -11,7 +11,7 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class AuthenticationService {
   private baseUrl: string;
-  private isLoggedSubject: boolean = false;
+  private isLogged: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -24,7 +24,7 @@ export class AuthenticationService {
     return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials).pipe(
       tap((response) => {
         this.localStorageService.setToken(response.token);
-        this.isLoggedSubject = true;
+        this.isLogged = true;
       }),
       catchError((error) => this.handleError(error))
     );
@@ -32,9 +32,9 @@ export class AuthenticationService {
 
   logged() {
     if (this.localStorageService.getToken()) {
-      this.isLoggedSubject = true;
+      this.isLogged = true;
     }
-    return this.isLoggedSubject;
+    return this.isLogged;
   }
 
   isLogIn() {
@@ -57,7 +57,8 @@ export class AuthenticationService {
     if (error.error instanceof ErrorEvent) {
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: data not valid`;
+      errorMessage = `Data is not valid, Please enter a valid email`;
+      console.log(errorMessage);
     }
     return throwError(errorMessage);
   }
