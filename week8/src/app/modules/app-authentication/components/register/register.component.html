@@ -58,7 +58,7 @@
         class="form-input"
         name="email"
         id="email"
-        placeholder="Email"
+        placeholder="me@example.com"
         formControlName="email"
       />
       <div class="error" *ngIf="email.touched && email.invalid">
@@ -81,17 +81,11 @@
         formControlName="password"
       />
     </div>
-    <div
-    class="error"
-    *ngIf="password.touched && password.invalid"
-  >
-    <div
-      class="error-text error"
-      *ngIf="password.errors?.required"
-    >
-      Field Password is required
+    <div class="error" *ngIf="password.touched && password.invalid">
+      <div class="error-text error" *ngIf="password.errors?.required">
+        Field Password is required
+      </div>
     </div>
-  </div>
     <div class="card-form">
       <label for="confirmPassword" class="label">Confirm password</label>
       <input
@@ -102,23 +96,14 @@
         placeholder="Confirm Password"
         formControlName="confirmPassword"
       />
-      <div
-      class="error"
-      *ngIf="confirmPassword.touched"
-    >
-      <div
-        class="error-text error"
-        *ngIf="confirmPassword.errors?.required"
-      >
-        Field Confirm Password is required
+      <div class="error" *ngIf="confirmPassword.touched">
+        <div class="error-text error" *ngIf="confirmPassword.errors?.required">
+          Field Confirm Password is required
+        </div>
+        <div class="error-text error" *ngIf="form.hasError('notMatch')">
+          Passwords don't match
+        </div>
       </div>
-      <div
-      class="error-text error"
-      *ngIf="form.hasError('notMatch')"
-    >
-      Passwords don't match
-    </div>
-    </div>
     </div>
     <button
       type="submit"
