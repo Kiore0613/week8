@@ -3,7 +3,7 @@
     <h1>Sign Up</h1>
   </div>
   <form [formGroup]="form" (ngSubmit)="register(form)">
-    <div class="card-form">
+    <div class="input-container">
       <label for="firstName" class="label">First Name</label>
       <input
         type="text"
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="card-form">
+    <div class="input-container">
       <label for="lastName" class="label">Last Name</label>
       <input
         type="text"
@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="card-form">
+    <div class="input-container">
       <label for="username" class="label">Username</label>
       <input
         type="text"
@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    <div class="card-form" formGroupName="credentialForm">
+    <div class="input-container" formGroupName="credentialForm">
       <div class="credential-container">
         <label for="email" class="label">Email</label>
         <input
@@ -71,7 +71,7 @@
           </div>
         </div>
       </div>
-      <div class="card-form">
+      <div class="input-container input">
         <label for="password" class="label">Password</label>
         <input
           type="password"
@@ -88,7 +88,7 @@
         </div>
       </div>
     </div>
-    <div class="card-form">
+    <div class="input-container">
       <label for="confirmPassword" class="label">Confirm password</label>
       <input
         type="password"
@@ -107,16 +107,18 @@
         </div>
       </div>
     </div>
-    <button
-      type="submit"
-      class="button"
-      (click)="register(form.value)"
-      [disabled]="!form.valid"
-    >
-      Register
-    </button>
+    <div class="card-button">
+      <button
+        type="submit"
+        class="button"
+        (click)="register(form.value)"
+        [disabled]="!form.valid"
+      >
+        Register
+      </button>
+    </div>
   </form>
-  <div class="error" *ngIf="errorMessage !== ''">
+  <div class="error-response" *ngIf="errorMessage !== ''">
     {{ errorMessage }}
   </div>
   <div class="card-title">
