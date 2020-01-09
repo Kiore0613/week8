@@ -37,10 +37,8 @@ export class MockApiService {
     return this.isLogged.asObservable();
   }
 
-  isLogOut(){
-    console.log(this.isLogged.getValue());
+  isLogOut() {
     return this.localStorageService.isTokenExist();
-
   }
 
   logout() {
