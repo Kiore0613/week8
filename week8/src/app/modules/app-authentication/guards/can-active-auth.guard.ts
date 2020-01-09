@@ -12,7 +12,6 @@ export class CanActiveAuthGuard implements CanActivate {
     this.mockApiService.logged().subscribe((status) => {
       if (!status) {
         this.router.navigate(['/login']);
-        console.log('Test Guard');
       }
     });
     return true;
