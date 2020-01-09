@@ -34,8 +34,17 @@ export class MockApiService {
     if (this.localStorageService.getToken()) {
       this.isLogged.next(true);
     }
-
     return this.isLogged.asObservable();
+  }
+
+  isLogOut(){
+    console.log(this.isLogged.getValue());
+    return this.localStorageService.isTokenExist();
+
+  }
+
+  logout() {
+    return this.localStorageService.removeToken();
   }
 
   handleError(error) {
@@ -43,7 +52,7 @@ export class MockApiService {
     if (error.error instanceof ErrorEvent) {
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: data not valid`;
     }
     return throwError(errorMessage);
   }
