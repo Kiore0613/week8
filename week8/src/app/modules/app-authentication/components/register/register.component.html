@@ -80,10 +80,10 @@
         placeholder="Password"
         formControlName="password"
       />
-    </div>
-    <div class="error" *ngIf="password.touched && password.invalid">
-      <div class="error-text error" *ngIf="password.errors?.required">
-        Field Password is required
+      <div class="error" *ngIf="password.touched && password.invalid">
+        <div class="error-text error" *ngIf="password.errors?.required">
+          Field Password is required
+        </div>
       </div>
     </div>
     <div class="card-form">
