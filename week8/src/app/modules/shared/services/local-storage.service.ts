@@ -9,8 +9,16 @@ export class LocalStorageService {
     return localStorage.getItem('token');
   }
 
+  isTokenExist(){
+    return !!localStorage.getItem('token');
+  }
+
   setToken(response) {
     localStorage.setItem('token', response)
+  }
+
+  removeToken() {
+    localStorage.removeItem('token');
   }
 
   constructor() { }
