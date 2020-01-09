@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { UserLogin } from '../../app-authentication/models/login';
-import { loginAuth } from '../../app-authentication/models/loginAuth';
+import { Credential } from '../../app-authentication/models/credential';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class MockApiService {
     this.baseUrl = 'https://reqres.in/api/';
   }
 
-  login(credentials: loginAuth) {
+  login(credentials: Credential) {
     return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials).pipe(
       tap((response) => {
         this.localStorageService.setToken(response.token);
@@ -48,7 +48,7 @@ export class MockApiService {
     return throwError(errorMessage);
   }
 
-  register(userData: loginAuth) {
+  register(userData: Credential) {
     return this.http.post<UserLogin>(`${this.baseUrl}register`, userData).pipe(
       map((response: UserLogin) => response),
       catchError(this.handleError)
