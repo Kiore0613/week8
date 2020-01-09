@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MockApiService } from 'src/app/modules/shared/services/mock-api.service';
+import { AuthenticationService } from 'src/app/modules/shared/services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private mockApiService: MockApiService, private router: Router) {}
+  constructor(
+    private mockApiService: AuthenticationService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {}
+  isHidden: boolean;
+
+  ngOnInit() {
+    this.isHidden = true;
+  }
+
+  showProfile() {
+    this.isHidden = !this.isHidden;
+  }
 
   logOut() {
     this.mockApiService.logout();
