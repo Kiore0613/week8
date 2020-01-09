@@ -8,9 +8,9 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background: $background-card;
-
   border-radius: 8px;
 }
+
 p,
 h1 {
   color: $font-color;
@@ -28,7 +28,12 @@ p {
 .card-title {
   p,
   a {
+    text-decoration: none;
+    cursor: pointer;
     font-size: 12px;
+  }
+  a:hover {
+    color: $background-button;
   }
   text-align: center;
   margin: 16px 0;
@@ -38,12 +43,6 @@ p {
   display: block;
   margin-top: 16px;
   padding: 0 16px;
-}
-
-a {
-  text-decoration: none;
-  color: $font-link;
-  cursor: pointer;
 }
 
 .error {
@@ -82,6 +81,10 @@ a {
   cursor: pointer;
   font-family: $font-title;
   font-size: 16px;
+}
+
+.button:hover {
+  background: $font-link;
 }
 
 @include screen-tablet {
