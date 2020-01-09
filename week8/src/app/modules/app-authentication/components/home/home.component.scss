@@ -12,9 +12,9 @@
   img {
     display: flex;
     justify-content: center;
-    margin: auto auto;
-    width: 80px;
-    height: 80px;
+    margin: 16px;
+    width: 60px;
+    height: 60px;
     background: none;
     border: none;
     border-radius: 50%;
@@ -27,6 +27,16 @@ h1 {
 }
 
 .card-profile {
+  img {
+    display: flex;
+    justify-content: center;
+    margin: auto auto;
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: none;
+    border-radius: 50%;
+  }
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: fit-content;
