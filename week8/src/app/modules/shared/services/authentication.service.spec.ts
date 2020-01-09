@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MockApiService } from './mock-api.service';
+import { AuthenticationService } from './authentication.service';
 
 describe('MockApiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: MockApiService = TestBed.get(MockApiService);
+    const service: AuthenticationService = TestBed.get(AuthenticationService);
     expect(service).toBeTruthy();
   });
 });
