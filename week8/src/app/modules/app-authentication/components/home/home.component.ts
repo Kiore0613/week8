@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   constructor(
-    private mockApiService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   logOut() {
-    this.mockApiService.logout();
+    this.authenticationService.logout();
     this.router.navigate(['/login']);
   }
 }
