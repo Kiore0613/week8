@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { MockApiService } from '../../shared/services/mock-api.service';
+import { AuthenticationService } from '../../shared/services/authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CanActiveAuthGuard implements CanActivate {
-  constructor(private mockApiService: MockApiService, private router: Router) {}
+  constructor(
+    private mockApiService: AuthenticationService,
+    private router: Router
+  ) {}
 
   canActivate() {
-    this.mockApiService.logged().subscribe((status) => {
-      if (!status) {
-        this.router.navigate(['/login']);
-      }
-    });
+    const isLoggedIn = this.mockApiService.logged();
+    if (!isLoggedIn) {
+      this.router.navigate(['/login']);
+      return false;
+    }
     return true;
   }
 }
