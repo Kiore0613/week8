@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/modules/shared/services/authentication.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { tap, finalize, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   errorMessage: string;
   form: FormGroup;
+  isDisabled: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -37,9 +39,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.authenticationService.login(this.form.value).subscribe(
-      () => this.router.navigate(['']),
-      (error) => (this.errorMessage = error)
-    );
+    this.authenticationService
+      .login(this.form.value)
+      .pipe(
+        tap(() => (this.isDisabled = true)),
+        delay(3000),
+        finalize(() => (this.isDisabled = false))
+      )
+      .subscribe(
+        () => this.router.navigate(['']),
+        (error) => (this.errorMessage = error)
+      );
   }
 }
