@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { UserLogin } from '../../app-authentication/models/login';
-import { Credential } from '../../app-authentication/models/credential';
+import { CredentialAuth } from '../../app-authentication/models/credential';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class AuthenticationService {
   private baseUrl: string;
-  private isLogged: boolean = false;
+  private isLogged = false;
 
   constructor(
     private http: HttpClient,
@@ -20,7 +20,7 @@ export class AuthenticationService {
     this.baseUrl = 'https://reqres.in/api/';
   }
 
-  login(credentials: Credential) {
+  login(credentials: CredentialAuth) {
     return this.http.post<UserLogin>(`${this.baseUrl}login`, credentials).pipe(
       tap((response) => {
         this.localStorageService.setToken(response.token);
@@ -45,7 +45,7 @@ export class AuthenticationService {
     return this.localStorageService.removeToken();
   }
 
-  register(userData: Credential) {
+  register(userData: CredentialAuth) {
     return this.http.post<UserLogin>(`${this.baseUrl}register`, userData).pipe(
       map((response: UserLogin) => response),
       catchError(this.handleError)
