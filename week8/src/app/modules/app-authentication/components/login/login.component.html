@@ -5,7 +5,7 @@
   <div class="error-response" *ngIf="errorMessage !== ''">
     {{ errorMessage }}
   </div>
-  <form [formGroup]="form" class="form" (ngSubmit)="login(form)">
+  <form [formGroup]="form" class="form" (ngSubmit)="login()">
     <div class="input-container">
       <label for="email" class="label">Email</label>
       <input
@@ -57,7 +57,6 @@
       <button
         type="submit"
         class="button"
-        (click)="login(form.value)"
         [disabled]="form.invalid || isDisabled"
       >
         Login

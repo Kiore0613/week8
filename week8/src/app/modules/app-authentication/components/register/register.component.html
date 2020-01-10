@@ -2,7 +2,7 @@
   <div class="card-title">
     <h1>Sign Up</h1>
   </div>
-  <form [formGroup]="form" class="form" (ngSubmit)="register(form)">
+  <form [formGroup]="form" class="form" (ngSubmit)="register()">
     <div class="input-container">
       <label for="firstName" class="label">First Name</label>
       <input
@@ -121,9 +121,7 @@
           *ngIf="getControl('password').errors?.minlength"
         >
           The minimun length is
-          {{
-            getControl('password').errors.minlength.requiredLength
-          }}
+          {{ getControl('password').errors.minlength.requiredLength }}
           characters
         </div>
       </div>
@@ -154,7 +152,6 @@
       <button
         type="submit"
         class="button"
-        (click)="register(form.value)"
         [disabled]="form.invalid || isDisabled"
       >
         Register
