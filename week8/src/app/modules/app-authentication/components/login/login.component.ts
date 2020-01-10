@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   errorMessage: string;
   form: FormGroup;
   isDisabled = false;
@@ -27,15 +27,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get email() {
-    return this.form.get('email');
+  getControl(name: string) {
+    return this.form.get(name);
   }
-
-  get password() {
-    return this.form.get('password');
-  }
-
-  ngOnInit() {}
 
   login() {
     this.isDisabled = true;
