@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, BehaviorSubject } from 'rxjs';
+import { throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { UserLogin } from '../../app-authentication/models/login';
 import { CredentialAuth } from '../../app-authentication/models/credential';
@@ -26,7 +26,7 @@ export class AuthenticationService {
         this.localStorageService.setToken(response.token);
         this.isLogged = true;
       }),
-      catchError((error) => this.handleError(error))
+      catchError((error) => this.handleErrorLogin(error))
     );
   }
 
@@ -48,16 +48,27 @@ export class AuthenticationService {
   register(userData: CredentialAuth) {
     return this.http.post<UserLogin>(`${this.baseUrl}register`, userData).pipe(
       map((response: UserLogin) => response),
-      catchError(this.handleError)
+      catchError(this.handleErrorRegister)
     );
   }
 
-  handleError(error: HttpErrorResponse) {
+  handleErrorLogin(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      errorMessage = `Data is not valid, Please enter a valid email`;
+      errorMessage = `The email you’ve entered doesn’t match any account`;
+      console.log(errorMessage);
+    }
+    return throwError(errorMessage);
+  }
+
+  handleErrorRegister(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Data invalid, please try again`;
       console.log(errorMessage);
     }
     return throwError(errorMessage);
