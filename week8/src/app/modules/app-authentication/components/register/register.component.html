@@ -116,6 +116,16 @@
         >
           Field Password is required
         </div>
+        <div
+          class="error-text error"
+          *ngIf="getControl('password').errors?.minlength"
+        >
+          The minimun length is
+          {{
+            getControl('password').errors.minlength.requiredLength
+          }}
+          characters
+        </div>
       </div>
     </div>
     <div class="input-container">
@@ -145,7 +155,7 @@
         type="submit"
         class="button"
         (click)="register(form.value)"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || isDisabled"
       >
         Register
       </button>

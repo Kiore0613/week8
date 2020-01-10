@@ -11,11 +11,12 @@ import { CredentialAuth } from '../../models/credential';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   form: FormGroup;
   credentialForm: FormGroup;
   errorMessage: string;
   credentials: CredentialAuth;
+  isDisabled = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +32,10 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.email,
         ]),
-        password: this.formBuilder.control('', [Validators.required]),
+        password: this.formBuilder.control('', [
+          Validators.required,
+          Validators.minLength(6),
+        ]),
 
         confirmPassword: this.formBuilder.control('', [Validators.required]),
       },
@@ -44,6 +48,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    this.isDisabled = true;
     const { email, password } = this.form.value as RegisterForm;
     this.credentials = {
       email,
@@ -51,9 +56,10 @@ export class RegisterComponent implements OnInit {
     };
     this.authenticationService.register(this.credentials).subscribe(
       () => this.router.navigate(['/login']),
-      (error: string) => (this.errorMessage = error)
+      (error: string) => {
+        this.errorMessage = error;
+        this.isDisabled = false;
+      }
     );
   }
-
-  ngOnInit() {}
 }
