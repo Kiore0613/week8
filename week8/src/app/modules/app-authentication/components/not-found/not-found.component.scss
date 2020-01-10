@@ -55,14 +55,14 @@
   }
 }
 
-@include screen-tablet {
+@include screen-medium {
   .container {
     width: 60%;
     margin: 0 auto;
   }
 }
 
-@include screen-laptop {
+@include screen-large {
   .container {
     width: 50%;
     margin: 0 auto;
