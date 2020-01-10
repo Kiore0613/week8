@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Space+Mono&display=swap');
 
 //Mixins sizes
-$screen-tablet: 768px;
-$screen-laptop: 1024px;
+$screen-small: 430px;
+$screen-medium: 710px;
+$screen-large: 1024px;
 
 //Colors
 $black: #17171a;

@@ -1,13 +1,19 @@
-@import "_variables.scss";
+@import '_variables.scss';
 
-@mixin screen-tablet {
-  @media (min-width: #{$screen-tablet}) {
+@mixin screen-small {
+  @media (min-width: #{$screen-small}) {
     @content;
   }
 }
 
-@mixin screen-laptop {
-  @media (min-width: #{$screen-laptop}) {
+@mixin screen-medium {
+  @media (min-width: #{$screen-medium}) {
+    @content;
+  }
+}
+
+@mixin screen-large {
+  @media (min-width: #{$screen-large}) {
     @content;
   }
 }
