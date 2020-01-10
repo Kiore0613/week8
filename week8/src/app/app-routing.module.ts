@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './modules/app-authentication/components/home/home.component';
 import { LoginComponent } from './modules/app-authentication/components/login/login.component';
 import { RegisterComponent } from './modules/app-authentication/components/register/register.component';
-import { CanActiveAuthGuard } from './modules/app-authentication/guards/can-active-auth.guard';
-import { CanActiveHomeGuard } from './modules/app-authentication/guards/can-active-home.guard';
+import { AuthGuard } from './modules/app-authentication/guards/auth-guard.guard';
+import { HomeGuard } from './modules/app-authentication/guards/home-guard.guard';
 
 const routes: Routes = [
   {
@@ -16,17 +16,17 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [CanActiveAuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [CanActiveHomeGuard],
+    canActivate: [HomeGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [CanActiveHomeGuard],
+    canActivate: [HomeGuard],
   },
   {
     path: '**',
