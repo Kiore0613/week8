@@ -60,10 +60,9 @@ h1 {
   cursor: pointer;
   font-family: $font-title;
   font-size: 16px;
-}
-
-.button:hover {
-  background: $font-link;
+  &:hover {
+    background: #e54d04;
+  }
 }
 
 .profile-details {
