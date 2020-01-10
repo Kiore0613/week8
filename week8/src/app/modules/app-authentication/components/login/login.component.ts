@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/modules/shared/services/authentication.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tap, finalize, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,7 @@ import { tap, finalize, delay } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
   errorMessage: string;
   form: FormGroup;
-  isDisabled: boolean = false;
+  isDisabled = false;
 
   constructor(
     private authenticationService: AuthenticationService,
