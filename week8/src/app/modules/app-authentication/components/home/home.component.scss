@@ -22,10 +22,6 @@
   }
 }
 
-h1 {
-  color: $font-color;
-}
-
 .card-profile {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -68,8 +64,7 @@ h1 {
 .profile-details {
   font-size: 12px;
   color: $font-color;
-  h2,
-  p {
+  .detail-info {
     margin: 0;
   }
   p {
