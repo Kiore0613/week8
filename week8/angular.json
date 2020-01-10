@@ -127,8 +127,17 @@
               "devServerTarget": "week8:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/week8",
+            "netlifyToken": "e1bc4a497eb44f8200f0cbf5ed26d22b85188ff594e2229939c24ddba48bb5d5",
+            "siteId": "d05adb20-6b2f-4e26-a869-fa7d5d82bb30"
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "week8"
 }
