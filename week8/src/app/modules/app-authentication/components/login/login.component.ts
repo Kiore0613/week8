@@ -39,16 +39,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.authenticationService
-      .login(this.form.value)
-      .pipe(
-        tap(() => (this.isDisabled = true)),
-        delay(3000),
-        finalize(() => (this.isDisabled = false))
-      )
-      .subscribe(
-        () => this.router.navigate(['']),
-        (error) => (this.errorMessage = error)
-      );
+    this.isDisabled = true;
+    this.authenticationService.login(this.form.value).subscribe(
+      () => this.router.navigate(['']),
+      (error) => {
+        this.errorMessage = error;
+        this.isDisabled = false;
+      }
+    );
   }
 }

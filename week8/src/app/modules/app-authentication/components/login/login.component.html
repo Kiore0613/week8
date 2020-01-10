@@ -46,7 +46,7 @@
         type="submit"
         class="button"
         (click)="login(form.value)"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || isDisabled"
       >
         Login
       </button>
