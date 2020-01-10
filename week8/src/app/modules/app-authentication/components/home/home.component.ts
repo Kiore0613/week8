@@ -8,16 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  isHidden: boolean = true;
+
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
-  isHidden: boolean;
-
-  ngOnInit() {
-    this.isHidden = true;
-  }
+  ngOnInit() {}
 
   showProfile() {
     this.isHidden = !this.isHidden;
