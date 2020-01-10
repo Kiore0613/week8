@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private authenticateService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -24,8 +24,6 @@ export class LoginComponent implements OnInit {
       ]),
       password: this.formBuilder.control('', [Validators.required]),
     });
-    this.form.controls.email.errors.required;
-    this.form.controls.password.errors.required;
   }
 
   get email() {
@@ -38,7 +36,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.authenticateService.login(this.form.value).subscribe(
+    this.authenticationService.login(this.form.value).subscribe(
       () => this.router.navigate(['']),
       (error) => (this.errorMessage = error)
     );

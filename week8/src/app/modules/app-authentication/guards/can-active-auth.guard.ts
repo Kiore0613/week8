@@ -7,12 +7,12 @@ import { AuthenticationService } from '../../shared/services/authentication.serv
 })
 export class CanActiveAuthGuard implements CanActivate {
   constructor(
-    private mockApiService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
   canActivate() {
-    const isLoggedIn = this.mockApiService.logged();
+    const isLoggedIn = this.authenticationService.logged();
     if (!isLoggedIn) {
       this.router.navigate(['/login']);
       return false;
