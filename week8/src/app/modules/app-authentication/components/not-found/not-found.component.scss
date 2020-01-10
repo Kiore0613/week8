@@ -34,25 +34,6 @@
   background: $background-card;
   color: $font-color;
   border-radius: 16px;
-  a {
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: $background-button;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0;
-    margin-left: -20px;
-  }
-  100% {
-    opacity: 1;
-    margin-left: 0px;
-  }
 }
 
 @include screen-medium {
