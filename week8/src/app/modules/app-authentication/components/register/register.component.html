@@ -2,7 +2,7 @@
   <div class="card-title">
     <h1>Sign Up</h1>
   </div>
-  <form [formGroup]="form" (ngSubmit)="register(form)">
+  <form [formGroup]="form" class="form" (ngSubmit)="register(form)">
     <div class="input-container">
       <label for="firstName" class="label">First Name</label>
       <input
@@ -112,7 +112,7 @@
         type="submit"
         class="button"
         (click)="register(form.value)"
-        [disabled]="!form.valid"
+        [disabled]="form.invalid"
       >
         Register
       </button>

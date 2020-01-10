@@ -2,16 +2,20 @@
 @import 'styles/mixins.scss';
 
 .container {
-  margin: 0 auto;
+  margin: 32px auto;
   width: 80%;
   background: $background-card;
   border-radius: 8px;
 }
 
+.form {
+  padding: 0 8px;
+  margin: 0 auto;
+}
+
 p,
 h1 {
   color: $font-color;
-  padding-top: 16px;
 }
 
 .label {
@@ -20,7 +24,6 @@ h1 {
 }
 
 .card-title {
-  padding: 8px;
   a {
     text-decoration: none;
     cursor: pointer;
@@ -28,15 +31,14 @@ h1 {
   a:hover {
     color: $background-button;
   }
+  padding: 16px;
   font-size: 14px;
   text-align: center;
-  margin-bottom: 16px;
 }
 
 .input-container {
   display: block;
   margin-top: 16px;
-  padding: 0 16px;
 }
 
 .input {
@@ -80,13 +82,12 @@ h1 {
 }
 
 .card-button {
-  padding: 0 16px;
   margin: 16px 0;
 }
 
 .button {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 16px;
   height: 36px;
   border-radius: 8px;
   background: $background-button;
@@ -95,32 +96,47 @@ h1 {
   cursor: pointer;
   font-family: $font-title;
   font-size: 16px;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &:hover {
+    background: $font-link;
+  }
 }
 
 .button:hover {
   background: $font-link;
 }
 
-@include screen-tablet {
-  .container {
-    width: 60%;
-    margin: 0 auto;
-  }
-
-  form {
-    width: 60%;
+@include screen-small {
+  .form {
+    width: 80%;
     margin: 0 auto;
   }
 }
 
-@include screen-laptop {
+@include screen-medium {
   .container {
     width: 60%;
-    margin: 0 auto;
   }
 
-  form {
-    width: 60%;
+  .form {
+    padding: 0 32px;
     margin: 0 auto;
+  }
+}
+
+@include screen-large {
+  .container {
+    width: 40%;
+  }
+
+  .card-button {
+    padding: 0;
+  }
+
+  .input-container {
+    padding-bottom: 16px;
   }
 }
