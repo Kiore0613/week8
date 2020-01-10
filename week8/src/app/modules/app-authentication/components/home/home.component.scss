@@ -93,7 +93,7 @@ h1 {
   font-size: 24px;
 }
 
-@include screen-tablet {
+@include screen-medium {
   .card-profile {
     position: absolute;
     margin-top: 24px;
@@ -101,7 +101,7 @@ h1 {
   }
 }
 
-@include screen-laptop {
+@include screen-large {
   .card-profile {
     position: absolute;
     right: 24px;
