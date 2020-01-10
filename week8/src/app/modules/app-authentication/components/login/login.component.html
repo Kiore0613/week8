@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="card-title">
+    <h1>Log In</h1>
+  </div>
+  <div class="error-response" *ngIf="errorMessage !== ''">
+    {{ errorMessage }}
+  </div>
+  <form [formGroup]="form" class="form" (ngSubmit)="login(form)">
+    <div class="input-container">
+      <label for="email" class="label">Email</label>
+      <input
+        type="text"
+        class="form-input"
+        formControlName="email"
+        name="email"
+        id="email"
+        placeholder="me@example.com"
+      />
+      <div
+        class="error"
+        *ngIf="getControl('email').touched && getControl('email').invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="getControl('email').errors?.required"
+        >
+          Field Email is required
+        </div>
+        <div class="error-text error" *ngIf="getControl('email').errors?.email">
+          The Email format is invalid
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="password" class="label">Password</label>
+      <input
+        type="password"
+        class="form-input"
+        formControlName="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+      />
+      <div
+        class="error"
+        *ngIf="getControl('password').touched && getControl('password').invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="getControl('password').errors?.required"
+        >
+          Field Password is required
+        </div>
+      </div>
+    </div>
+    <div class="card-button">
+      <button
+        type="submit"
+        class="button"
+        (click)="login(form.value)"
+        [disabled]="form.invalid || isDisabled"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+  <div class="card-title">
+    <p>Don't have an account?</p>
+    <a routerLink="/register">Sign Up here</a>
+  </div>
+</div>

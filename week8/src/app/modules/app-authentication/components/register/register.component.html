@@ -1,0 +1,171 @@
+<div class="container">
+  <div class="card-title">
+    <h1>Sign Up</h1>
+  </div>
+  <form [formGroup]="form" class="form" (ngSubmit)="register(form)">
+    <div class="input-container">
+      <label for="firstName" class="label">First Name</label>
+      <input
+        type="text"
+        class="form-input"
+        name="firstName"
+        id="firtName"
+        placeholder="First Name"
+        formControlName="firstName"
+      />
+      <div
+        class="error"
+        *ngIf="
+          getControl('firstName').touched && getControl('firstName').invalid
+        "
+      >
+        <div
+          class="error-text error"
+          *ngIf="getControl('firstName').errors?.required"
+        >
+          Field First Name is required
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="lastName" class="label">Last Name</label>
+      <input
+        type="text"
+        class="form-input"
+        name="lastName"
+        id="lastName"
+        placeholder="Last Name"
+        formControlName="lastName"
+      />
+      <div
+        class="error"
+        *ngIf="getControl('lastName').touched && getControl('lastName').invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="getControl('lastName').errors?.required"
+        >
+          Field Last Name is required
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="username" class="label">Username</label>
+      <input
+        type="text"
+        class="form-input"
+        name="username"
+        id="username"
+        placeholder="Username"
+        formControlName="username"
+      />
+      <div
+        class="error"
+        *ngIf="getControl('username').touched && getControl('username').invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="getControl('username').errors?.required"
+        >
+          Field Username is required
+        </div>
+      </div>
+    </div>
+    <div class="credential-container">
+      <label for="email" class="label">Email</label>
+      <input
+        type="text"
+        class="form-input"
+        name="email"
+        id="email"
+        placeholder="me@example.com"
+        formControlName="email"
+      />
+      <div
+        class="error"
+        *ngIf="getControl('email').touched && getControl('email').invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="getControl('email').errors?.required"
+        >
+          Field Email is required
+        </div>
+        <div class="error-text error" *ngIf="getControl('email').errors?.email">
+          The Email format is invalid
+        </div>
+      </div>
+    </div>
+    <div class="input-container input">
+      <label for="password" class="label">Password</label>
+      <input
+        type="password"
+        class="form-input"
+        name="password"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <div
+        class="error"
+        *ngIf="getControl('password').touched && getControl('password').invalid"
+      >
+        <div
+          class="error-text error"
+          *ngIf="getControl('password').errors?.required"
+        >
+          Field Password is required
+        </div>
+        <div
+          class="error-text error"
+          *ngIf="getControl('password').errors?.minlength"
+        >
+          The minimun length is
+          {{
+            getControl('password').errors.minlength.requiredLength
+          }}
+          characters
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="confirmPassword" class="label">Confirm password</label>
+      <input
+        type="password"
+        class="form-input"
+        name="confirmPassword"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
+      />
+      <div class="error" *ngIf="getControl('confirmPassword').touched">
+        <div
+          class="error-text error"
+          *ngIf="getControl('confirmPassword').errors?.required"
+        >
+          Field Confirm Password is required
+        </div>
+        <div class="error-text error" *ngIf="form.hasError('notMatch')">
+          Passwords don't match
+        </div>
+      </div>
+    </div>
+    <div class="card-button">
+      <button
+        type="submit"
+        class="button"
+        (click)="register(form.value)"
+        [disabled]="form.invalid || isDisabled"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+  <div class="error-response" *ngIf="errorMessage !== ''">
+    {{ errorMessage }}
+  </div>
+  <div class="card-title">
+    <p>You have an account?</p>
+    <a routerLink="/login">Sign In here</a>
+  </div>
+</div>

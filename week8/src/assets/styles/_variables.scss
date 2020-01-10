@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=BioRhyme&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono&display=swap');
+
+//Mixins sizes
+$screen-small: 430px;
+$screen-medium: 710px;
+$screen-large: 1024px;
+
+//Colors
+$black: #17171a;
+$black-primary: #000000;
+$grey: #5d5d5e;
+$light-grey: #a69b97;
+$white: #f4f4f4;
+$blue-primary: #5f68fa;
+$blue: #9162e4;
+$red: #ff7961;
+
+$background: $black-primary;
+$background-card: $black;
+$background-input: $grey;
+$font-color: $white;
+$font-link: $blue-primary;
+$background-button: $blue-primary;
+$error: $red;
+$placeholder: $light-grey;
+
+//Typographic
+$font-title: 'BioRhyme';
+$font-body: 'Space Mono';

@@ -1,0 +1,130 @@
+@import 'styles/variables.scss';
+@import 'styles/mixins.scss';
+
+.container {
+  margin: 32px auto;
+  width: 80%;
+  background: $background-card;
+  border-radius: 8px;
+}
+
+.form {
+  padding: 0 8px;
+  margin: 0 auto;
+}
+
+.label {
+  margin-bottom: 16px;
+  color: $font-color;
+}
+
+.card-title {
+  padding: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.input-container {
+  display: block;
+  margin-top: 16px;
+}
+
+.input {
+  padding: 0;
+  margin-top: 16px;
+}
+
+.error {
+  margin-top: 8px;
+  margin-right: 8px;
+  color: #ff7961;
+  font-size: 12px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.error-response {
+  margin-top: 8px;
+  padding: 8px;
+  color: #ff7961;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card-form {
+  margin: 20px 0;
+}
+
+.form-input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  height: 36px;
+  text-indent: 16px;
+  background: $background-input;
+  border: none;
+  border-radius: 8px;
+  color: $font-color;
+}
+
+.card-button {
+  margin: 16px 0;
+}
+
+.button {
+  width: 100%;
+  margin-top: 16px;
+  height: 36px;
+  border-radius: 8px;
+  background: $background-button;
+  color: $font-color;
+  border: none;
+  cursor: pointer;
+  font-family: $font-title;
+  font-size: 16px;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &:hover {
+    background: $font-link;
+  }
+}
+
+.button:hover {
+  background: $font-link;
+}
+
+@include screen-small {
+  .form {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@include screen-medium {
+  .container {
+    width: 60%;
+  }
+
+  .form {
+    padding: 0 32px;
+    margin: 0 auto;
+  }
+}
+
+@include screen-large {
+  .container {
+    width: 40%;
+  }
+
+  .card-button {
+    padding: 0;
+  }
+
+  .input-container {
+    padding-bottom: 16px;
+  }
+}
