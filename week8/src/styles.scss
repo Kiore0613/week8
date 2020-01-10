@@ -9,6 +9,20 @@ body {
 
 *h1 {
   font-family: $font-title;
+  color: $font-color;
+}
+
+*p {
+  color: $font-color;
+}
+
+*a {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 12px;
+  &:hover {
+    color: $background-button;
+  }
 }
 
 input::placeholder {
